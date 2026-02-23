@@ -1,5 +1,5 @@
 /* ======================================== */
-/* DRAGONFALL MASTER THEME */
+/* DRAGONFALL MASTER THEME - NIGHT VERSION */
 /* ======================================== */
 
 /* ============================= */
@@ -25,26 +25,49 @@
 }
 
 /* ============================= */
-/* GLOBAL */
+/* GLOBAL / BODY */
 /* ============================= */
 body {
-    background: radial-gradient(circle at top, #2c2a26 0%, #1a1917 100%);
+    background: radial-gradient(circle at top, #1a1814 0%, #0f0e0d 100%);
     color: var(--parchment);
     font-family: "Cinzel", serif;
     letter-spacing: 0.5px;
     margin: 0;
+    overflow-x: hidden;
 }
 
 body.ash-overlay::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 10px);
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.015) 0 1px,
+        transparent 1px 15px
+    );
     pointer-events: none;
     z-index: 999;
 }
 
-h1, h2, h3, h4, h5 {
+/* NIGHT MIST LAYER */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.015), transparent 70%);
+    pointer-events: none;
+    animation: mist-drift 120s linear infinite;
+    z-index: 998;
+}
+
+@keyframes mist-drift {
+    0% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(3%) translateY(-1%); }
+    100% { transform: translateX(0) translateY(0); }
+}
+
+/* HEADINGS */
+h1,h2,h3,h4,h5 {
     font-weight: 400;
     text-transform: uppercase;
     color: var(--gold);
@@ -73,45 +96,38 @@ p {
 /* MEDIEVAL CARDS */
 /* ============================= */
 .medieval-card {
-    background: linear-gradient(160deg, #2e2b25, #1d1b18);
+    position: relative;
+    background: linear-gradient(160deg, #22201c, #1b1915);
     border: 1px solid var(--gold-dark);
-    box-shadow: 0 15px 30px var(--shadow-deep), inset 0 0 10px rgba(255,255,255,0.05);
+    box-shadow: 0 12px 28px var(--shadow-deep), inset 0 0 8px rgba(255,255,255,0.05);
     padding: 1.5rem;
     border-radius: 12px;
     transition: 0.3s ease;
 }
 
 .medieval-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 35px var(--shadow-deep), 0 0 10px var(--gold-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 32px var(--shadow-deep), 0 0 12px var(--gold-dark);
 }
 
-/* ============================= */
-/* TORCHLIGHT EFFECT */
-/* ============================= */
-.torchlight {
-    position: relative;
-}
-
+/* TORCHLIGHT GLOW */
 .torchlight::before {
     content: "";
     position: absolute;
     inset: -20px;
-    background: radial-gradient(circle, rgba(255,170,60,0.25) 0%, rgba(255,140,40,0.15) 30%, transparent 70%);
-    filter: blur(18px);
+    background: radial-gradient(circle, rgba(255,140,40,0.25) 0%, transparent 70%);
+    filter: blur(15px);
     animation: torch-flicker 3s infinite;
     pointer-events: none;
 }
 
 @keyframes torch-flicker {
-    0% { opacity: 0.7; }
+    0%,100% { opacity: 0.75; }
     50% { opacity: 1; }
-    100% { opacity: 0.8; }
 }
 
 /* ============================= */
 /* BANNERS */
-/* ============================= */
 .banner {
     background: linear-gradient(to bottom, #3a0f0f, var(--dragon-red), #3a0f0f);
     border-top: 2px solid #2b0a0a;
@@ -124,18 +140,7 @@ p {
 }
 
 /* ============================= */
-/* CREST FRAME */
-/* ============================= */
-.crest-frame {
-    border: 3px solid var(--gold-dark);
-    padding: 1.5rem;
-    background: radial-gradient(circle at top, rgba(255,200,120,0.12), transparent 60%), #1b1915;
-    box-shadow: 0 0 25px var(--shadow-deep), inset 0 0 15px rgba(255,180,80,0.15);
-}
-
-/* ============================= */
 /* BUTTONS */
-/* ============================= */
 .medieval-btn {
     background: linear-gradient(145deg, var(--gold), var(--gold-dark));
     color: #1a1a1a;
@@ -147,10 +152,7 @@ p {
     box-shadow: 0 5px 15px var(--shadow-soft), inset 0 0 6px rgba(255,255,255,0.2);
     transition: 0.2s ease;
 }
-
-.medieval-btn:hover {
-    transform: translateY(-2px);
-}
+.medieval-btn:hover { transform: translateY(-2px); }
 
 .dragon-btn {
     background: linear-gradient(145deg, var(--dragon-red), var(--dragon-deep));
@@ -158,58 +160,49 @@ p {
     color: var(--parchment);
     box-shadow: 0 0 12px rgba(255,120,60,0.3), inset 0 0 8px rgba(255,180,80,0.15);
 }
+.dragon-btn:hover { box-shadow: 0 0 25px rgba(255,140,60,0.6); }
 
-.dragon-btn:hover {
-    box-shadow: 0 0 25px rgba(255,140,60,0.6);
+/* ============================= */
+/* DRAGON SILHOUETTE HERO */
+.dragon-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("/assets/dragon-silhouette.png") center center no-repeat;
+    background-size: contain;
+    opacity: 0.04;
+    animation: dragon-drift 60s linear infinite;
+    pointer-events: none;
+}
+@keyframes dragon-drift {
+    0% { transform: translateX(-5%); }
+    50% { transform: translateX(5%); }
+    100% { transform: translateX(-5%); }
+}
+
+/* FIRE EMBER FLOATING PARTICLES */
+.ember-field::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,170,80,0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: ember-rise 30s linear infinite;
+    opacity: 0.03;
+    pointer-events: none;
+}
+@keyframes ember-rise {
+    0% { background-position: 0 100%; }
+    100% { background-position: 0 -100%; }
 }
 
 /* ============================= */
-/* NAVBAR, TABLES, FORMS, FOOTER, SCROLLBAR */
-/* ============================= */
-.medieval-navbar { background: linear-gradient(to right, #1a1814, #2b2721); border-bottom: 2px solid var(--gold-dark); padding: 1rem 2rem; }
-.medieval-navbar a { color: var(--parchment); margin-right: 2rem; text-decoration: none; }
-.medieval-navbar a:hover { color: var(--gold); }
-
-.medieval-table { width: 100%; border-collapse: collapse; background: #1f1d19; color: var(--parchment); }
-.medieval-table th { background: var(--gold-dark); color: #111; padding: 0.75rem; }
-.medieval-table td { padding: 0.75rem; border-bottom: 1px solid #3a352c; }
-.medieval-table tr:hover { background: #29251f; }
-
-.medieval-input { background: #2a2722; border: 1px solid var(--gold-dark); color: var(--parchment); padding: 0.6rem; border-radius: 4px; }
-.medieval-input:focus { outline: none; box-shadow: 0 0 8px var(--gold-dark); }
-
-.medieval-divider { height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 2rem 0; }
-
-footer { margin-top: 4rem; padding: 2rem; text-align: center; background: #141310; border-top: 1px solid var(--gold-dark); color: var(--parchment-dark); }
-
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #1b1a18; }
-::-webkit-scrollbar-thumb { background: var(--gold-dark); }
-
-/* ============================= */
-/* DRAGONFALL HERO & TEXTURES */
-/* ============================= */
-.dragon-hero { position: relative; padding: 6rem 2rem; text-align: center; background: radial-gradient(circle at center, rgba(255,180,80,0.08), transparent 70%), linear-gradient(to bottom, #1a1917, #0f0e0d); border-bottom: 2px solid var(--gold-dark); }
-
-.dragon-bg { position: relative; overflow: hidden; }
-
-.dragon-horizon { position: absolute; bottom: 0; left: 0; width: 200%; height: 180px; background: repeating-linear-gradient(to right, #1a1917 0 4px, #111 4px 8px); z-index: 0; opacity: 0.15; animation: horizon-drift 120s linear infinite; }
-
-@keyframes horizon-drift { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-.ember-field::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,170,80,0.4) 1px, transparent 1px); background-size: 40px 40px; animation: ember-rise 25s linear infinite; opacity: 0.05; pointer-events: none; }
-
-@keyframes ember-rise { 0% { background-position: 0 100%; } 100% { background-position: 0 -100%; } }
-
-.torch-sconce { position: fixed; width: 12px; height: 60px; background: radial-gradient(circle, #ff9c42, #7a1e1e 60%); border-radius: 50%; box-shadow: 0 0 20px rgba(255,140,40,0.6); animation: flicker 1.5s infinite; }
-.torch-left { left: 2%; }
-.torch-right { right: 2%; }
-@keyframes flicker { 0%,100% { transform: translateY(0) scaleY(1); opacity:0.8; } 50% { transform: translateY(-2px) scaleY(1.1); opacity:1; } }
-
-.heraldry-panel { position: relative; overflow: hidden; cursor: pointer; transition: transform 0.4s ease; }
-.heraldry-panel:hover { transform: scale(1.05); }
-.heraldry-banner::before { content: ''; position: absolute; top: -50%; left: -25%; width: 150%; height: 150%; background: radial-gradient(circle, rgba(255,200,80,0.15), transparent); transform: rotate(-20deg); transition: 0.5s; }
-.heraldry-panel:hover .heraldry-banner::before { top:0; left:0; transform: rotate(0deg); }
-
-.prosperity-glow { animation: pulse-wealth 3s ease-in-out infinite; box-shadow: 0 0 15px var(--gold-dark); }
-@keyframes pulse-wealth { 0% { box-shadow: 0 0 5px var(--gold-dark); } 50% { box-shadow: 0 0 25px var(--gold); } 100% { box-shadow: 0 0 5px var(--gold-dark); }
+/* FOOTER */
+footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    text-align: center;
+    background: #141310;
+    border-top: 1px solid var(--gold-dark);
+    color: var(--parchment-dark);
+}
