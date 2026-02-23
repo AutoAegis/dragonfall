@@ -1,0 +1,489 @@
+/* ======================================== */
+/* DRAGONFALL MASTER THEME */
+/* ======================================== */
+
+/* ============================= */
+/* ROOT VARIABLES */
+/* ============================= */
+
+:root {
+    --parchment: #e8dcc3;
+    --parchment-dark: #d6c4a5;
+    --ink: #1c1a16;
+
+    --gold: #c6a84a;
+    --gold-dark: #9f842f;
+
+    --dragon-red: #7a1e1e;
+    --dragon-deep: #4c1212;
+    --dragon-ember: #ffb347;
+
+    --emerald: #1f3d2b;
+    --stone: #2a2a28;
+
+    --shadow-deep: rgba(0,0,0,0.6);
+    --shadow-soft: rgba(0,0,0,0.3);
+}
+
+/* ============================= */
+/* GLOBAL */
+/* ============================= */
+
+body {
+    background: radial-gradient(circle at top, #2c2a26 0%, #1a1917 100%);
+    color: var(--parchment);
+    font-family: "Cinzel", serif;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* Optional ash overlay */
+body.ash-overlay::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("/assets/textures/ash.png");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 999;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-shadow: 0 0 8px var(--shadow-deep);
+}
+
+p {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* ============================= */
+/* PARCHMENT PANELS */
+/* ============================= */
+
+.parchment-panel {
+    background: linear-gradient(145deg, var(--parchment), var(--parchment-dark));
+    color: var(--ink);
+    border: 2px solid var(--gold-dark);
+    box-shadow:
+        inset 0 0 25px rgba(0,0,0,0.2),
+        0 10px 25px var(--shadow-deep);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+/* ============================= */
+/* MEDIEVAL CARDS */
+/* ============================= */
+
+.medieval-card {
+    background: linear-gradient(160deg, #2e2b25, #1d1b18);
+    border: 1px solid var(--gold-dark);
+    box-shadow:
+        0 15px 30px var(--shadow-deep),
+        inset 0 0 10px rgba(255,255,255,0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: 0.3s ease;
+}
+
+.medieval-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 20px 35px var(--shadow-deep),
+        0 0 10px var(--gold-dark);
+}
+
+/* ============================= */
+/* TORCHLIGHT EFFECT */
+/* ============================= */
+
+.torchlight {
+    position: relative;
+}
+
+.torchlight::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(
+        circle,
+        rgba(255,170,60,0.25) 0%,
+        rgba(255,140,40,0.15) 30%,
+        transparent 70%
+    );
+    filter: blur(18px);
+    animation: torch-flicker 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes torch-flicker {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+/* ============================= */
+/* BANNERS */
+/* ============================= */
+
+.banner {
+    background: linear-gradient(
+        to bottom,
+        #3a0f0f,
+        var(--dragon-red),
+        #3a0f0f
+    );
+    border-top: 2px solid #2b0a0a;
+    border-bottom: 2px solid #2b0a0a;
+    color: var(--parchment);
+    padding: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ============================= */
+/* CREST FRAME */
+/* ============================= */
+
+.crest-frame {
+    border: 3px solid var(--gold-dark);
+    padding: 1.5rem;
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255,200,120,0.12),
+            transparent 60%
+        ),
+        #1b1915;
+    box-shadow:
+        0 0 25px var(--shadow-deep),
+        inset 0 0 15px rgba(255,180,80,0.15);
+}
+
+/* ============================= */
+/* BUTTONS */
+/* ============================= */
+
+.medieval-btn {
+    background: linear-gradient(145deg, var(--gold), var(--gold-dark));
+    color: #1a1a1a;
+    border: 2px solid #8b6e2a;
+    padding: 0.6rem 1.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 6px;
+    box-shadow:
+        0 5px 15px var(--shadow-soft),
+        inset 0 0 6px rgba(255,255,255,0.2);
+    transition: 0.2s ease;
+}
+
+.medieval-btn:hover {
+    transform: translateY(-2px);
+}
+
+.dragon-btn {
+    background: linear-gradient(145deg, var(--dragon-red), var(--dragon-deep));
+    border: 2px solid #2e0a0a;
+    color: var(--parchment);
+    box-shadow:
+        0 0 12px rgba(255,120,60,0.3),
+        inset 0 0 8px rgba(255,180,80,0.15);
+}
+
+.dragon-btn:hover {
+    box-shadow: 0 0 25px rgba(255,140,60,0.6);
+}
+
+/* ============================= */
+/* NAVBAR */
+/* ============================= */
+
+.medieval-navbar {
+    background: linear-gradient(to right, #1a1814, #2b2721);
+    border-bottom: 2px solid var(--gold-dark);
+    padding: 1rem 2rem;
+}
+
+.medieval-navbar a {
+    color: var(--parchment);
+    margin-right: 2rem;
+    text-decoration: none;
+}
+
+.medieval-navbar a:hover {
+    color: var(--gold);
+}
+
+/* ============================= */
+/* TABLES */
+/* ============================= */
+
+.medieval-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1f1d19;
+    color: var(--parchment);
+}
+
+.medieval-table th {
+    background: var(--gold-dark);
+    color: #111;
+    padding: 0.75rem;
+}
+
+.medieval-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #3a352c;
+}
+
+.medieval-table tr:hover {
+    background: #29251f;
+}
+
+/* ============================= */
+/* FORMS */
+/* ============================= */
+
+.medieval-input {
+    background: #2a2722;
+    border: 1px solid var(--gold-dark);
+    color: var(--parchment);
+    padding: 0.6rem;
+    border-radius: 4px;
+}
+
+.medieval-input:focus {
+    outline: none;
+    box-shadow: 0 0 8px var(--gold-dark);
+}
+
+/* ============================= */
+/* DIVIDER */
+/* ============================= */
+
+.medieval-divider {
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 2rem 0;
+}
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    text-align: center;
+    background: #141310;
+    border-top: 1px solid var(--gold-dark);
+    color: var(--parchment-dark);
+}
+
+/* ============================= */
+/* SCROLLBAR */
+/* ============================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1b1a18;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold-dark);
+}
+
+/* ======================================== */
+/* DRAGONFALL HERALDRY SYSTEM */
+/* ======================================== */
+
+/* Heraldry Base */
+
+.heraldry {
+    position: relative;
+    padding: 2rem;
+    border: 4px solid var(--gold-dark);
+    border-radius: 12px;
+    text-align: center;
+    background: linear-gradient(
+        160deg,
+        #1c1a16,
+        #141310
+    );
+    box-shadow:
+        0 0 30px var(--shadow-deep),
+        inset 0 0 20px rgba(255,200,120,0.08);
+    overflow: hidden;
+}
+
+/* Heraldry Banner Top */
+
+.heraldry::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--gold),
+        transparent
+    );
+}
+
+/* House Color Variants */
+
+.house-crimson {
+    background: linear-gradient(145deg, #4a1111, #2a0707);
+}
+
+.house-emerald {
+    background: linear-gradient(145deg, #143a27, #0c2418);
+}
+
+.house-sapphire {
+    background: linear-gradient(145deg, #102a4a, #0a1b2f);
+}
+
+.house-obsidian {
+    background: linear-gradient(145deg, #1a1a1a, #0e0e0e);
+}
+
+/* House Crest Icon */
+
+.house-crest {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 15px rgba(255,200,120,0.5);
+}
+
+/* ======================================== */
+/* DRAGON SILHOUETTE BACKGROUND */
+/* ======================================== */
+
+.dragon-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.dragon-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("/assets/dragon-silhouette.png") center center no-repeat;
+    background-size: contain;
+    opacity: 0.04;
+    animation: dragon-drift 60s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes dragon-drift {
+    0% { transform: translateX(-5%); }
+    50% { transform: translateX(5%); }
+    100% { transform: translateX(-5%); }
+}
+
+/* ======================================== */
+/* FIRE EMBER FLOATING PARTICLES */
+/* ======================================== */
+
+.ember-field {
+    position: relative;
+}
+
+.ember-field::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+        rgba(255,170,80,0.4) 1px,
+        transparent 1px
+    );
+    background-size: 40px 40px;
+    animation: ember-rise 25s linear infinite;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+@keyframes ember-rise {
+    0% { background-position: 0 100%; }
+    100% { background-position: 0 -100%; }
+}
+
+/* ======================================== */
+/* DRAGONFALL LANDING HERO */
+/* ======================================== */
+
+.dragon-hero {
+    position: relative;
+    padding: 6rem 2rem;
+    text-align: center;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,180,80,0.08),
+            transparent 70%
+        ),
+        linear-gradient(
+            to bottom,
+            #1a1917,
+            #0f0e0d
+        );
+    border-bottom: 2px solid var(--gold-dark);
+}
+
+.dragon-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.dragon-hero p {
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.85;
+}
+
+/* ======================================== */
+/* METAL FRAME CONTAINERS */
+/* ======================================== */
+
+.metal-frame {
+    border: 3px solid var(--gold-dark);
+    padding: 2rem;
+    border-radius: 10px;
+    background: linear-gradient(
+        145deg,
+        #2a2722,
+        #1c1a16
+    );
+    box-shadow:
+        inset 0 0 20px rgba(255,200,120,0.1),
+        0 0 20px var(--shadow-deep);
+}
+
+/* ======================================== */
+/* GLOW PULSE FOR IMPORTANT ELEMENTS */
+/* ======================================== */
+
+.glow-pulse {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 5px var(--gold-dark); }
+    50% { box-shadow: 0 0 20px var(--gold); }
+    100% { box-shadow: 0 0 5px var(--gold-dark); }
+}
