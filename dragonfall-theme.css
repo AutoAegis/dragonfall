@@ -322,3 +322,39 @@ footer {
     border-top: 1px solid var(--gold-dark);
     color: var(--parchment-dark);
 }
+
+/* ======================================== */
+/* DAY NIGHT REALM SYSTEM */
+/* ======================================== */
+
+:root {
+    --realm-bg: #141310;
+    --realm-accent: #c9a227;
+    --realm-glow: rgba(255, 200, 120, 0.15);
+}
+
+body {
+    background: radial-gradient(circle at center, var(--realm-bg), #0e0d0b);
+    transition: background 2s ease, color 2s ease;
+}
+
+/* DAY STATE */
+body.realm-day {
+    --realm-bg: #2c2417;
+    --realm-accent: #e6c76b;
+    --realm-glow: rgba(255, 220, 150, 0.2);
+}
+
+/* NIGHT STATE */
+body.realm-night {
+    --realm-bg: #0f1118;
+    --realm-accent: #7aa0ff;
+    --realm-glow: rgba(120, 150, 255, 0.2);
+}
+
+/* DUSK STATE */
+body.realm-dusk {
+    --realm-bg: #1b1418;
+    --realm-accent: #ff914d;
+    --realm-glow: rgba(255, 120, 60, 0.2);
+}
