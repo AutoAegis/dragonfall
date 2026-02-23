@@ -15,32 +15,30 @@
 
 <body class="ash-overlay realm-night">
 
-<!-- GOLD PARTICLE FIELD -->
 <div class="particle-field"></div>
 
-<!-- HERO SECTION -->
-<section class="dragon-hero dragon-bg ember-field reveal">
+<!-- HERO -->
+<section class="dragon-hero ember-field stained-glass heraldic-border reveal">
     <h1 class="royal-title torch">Dragonfall</h1>
     <p>The realm forged in fire and oath.</p>
 
     <div class="mt-4">
-        <a href="login.html" class="medieval-btn wax-seal">Enter the Realm</a>
-        <a href="register.html" class="dragon-btn medieval-btn wax-seal ms-3">Swear Oath</a>
+        <a href="login.html" class="medieval-btn">Enter the Realm</a>
+        <a href="register.html" class="medieval-btn ms-3">Swear Oath</a>
     </div>
 </section>
 
-<!-- MAIN NAVIGATION CARDS -->
-<div class="container mt-5">
+<!-- MAIN NAVIGATION -->
+<div class="container mt-5 reveal">
 
-    <div class="banner mb-5 reveal">
+    <div class="banner heraldic-border mb-5">
         Realm Systems
     </div>
 
     <div class="row g-4">
 
-        <!-- Economy -->
-        <div class="col-md-4 col-sm-6 reveal">
-            <div class="medieval-card torch text-center">
+        <div class="col-md-4 col-sm-6">
+            <div class="medieval-card ornate-frame torch text-center">
                 <i class="fa fa-coins house-crest"></i>
                 <h4>Economy</h4>
                 <p>Trade, wealth, and treasury power.</p>
@@ -48,9 +46,8 @@
             </div>
         </div>
 
-        <!-- Players -->
-        <div class="col-md-4 col-sm-6 reveal">
-            <div class="medieval-card torch text-center">
+        <div class="col-md-4 col-sm-6">
+            <div class="medieval-card ornate-frame torch text-center">
                 <i class="fa fa-users house-crest"></i>
                 <h4>Players</h4>
                 <p>Citizens of Dragonfall.</p>
@@ -58,9 +55,8 @@
             </div>
         </div>
 
-        <!-- Exchange -->
-        <div class="col-md-4 col-sm-6 reveal">
-            <div class="medieval-card torch text-center">
+        <div class="col-md-4 col-sm-6">
+            <div class="medieval-card ornate-frame torch text-center">
                 <i class="fa fa-rotate house-crest"></i>
                 <h4>Exchange</h4>
                 <p>Convert and control currency.</p>
@@ -71,14 +67,14 @@
     </div>
 </div>
 
-<!-- HOUSES SECTION -->
+<!-- HOUSES -->
 <div class="container mt-5 reveal">
 
-    <div class="banner mb-4">
+    <div class="banner heraldic-border mb-4">
         Noble Houses
     </div>
 
-    <div class="metal-frame parchment-panel text-center torch">
+    <div class="parchment-panel ornate-frame text-center">
         <h4>The Great Houses Rise Soon</h4>
         <p>
             Allegiances are forming. Crests will be revealed.
@@ -94,58 +90,12 @@
 
 </div>
 
-<!-- FOOTER -->
 <footer class="mt-5 text-center">
     © Dragonfall
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- REALM CYCLE -->
-<script>
-function setRealmState() {
-    const hour = new Date().getHours();
-    document.body.classList.remove("realm-day","realm-dusk","realm-night");
-
-    if (hour >= 6 && hour < 17) {
-        document.body.classList.add("realm-day");
-    } else if (hour >= 17 && hour < 20) {
-        document.body.classList.add("realm-dusk");
-    } else {
-        document.body.classList.add("realm-night");
-    }
-}
-setRealmState();
-</script>
-
-<!-- GOLD PARTICLES -->
-<script>
-const field = document.querySelector(".particle-field");
-
-for (let i = 0; i < 40; i++) {
-    const p = document.createElement("div");
-    p.className = "gold-particle";
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.animationDuration = (10 + Math.random() * 20) + "s";
-    p.style.animationDelay = Math.random() * 10 + "s";
-    field.appendChild(p);
-}
-</script>
-
-<!-- SCROLL REVEAL -->
-<script>
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-        }
-    });
-}, { threshold: 0.15 });
-
-document.querySelectorAll(".reveal").forEach(el => {
-    observer.observe(el);
-});
-</script>
+<script src="realm-effects.js"></script>
 
 </body>
 </html>
