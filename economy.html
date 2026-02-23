@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Economy - Dragonfall</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1">
+<meta name="author" content="dragonfall.com">
+
+<meta name="description" content="Participate in the economy system for Dragonfall. Send and receive coins, view transaction history, and increase your Group or House wealth!">
+<meta property="og:description" content="Participate in the economy system for Dragonfall. Send and receive coins, view transaction history, and increase your Group or House wealth!">
+<meta property="og:title" content="Economy - Dragonfall">
+<meta property="og:url" content="https://dragonfall.com">
+<meta property="og:site_name" content="Dragonfall">
+<meta property="og:image" content="https://dragonfall.com/assets/dragonfall-og.png">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="dragonfall.com">
+<meta property="twitter:url" content="https://dragonfall.com">
+<meta name="twitter:title" content="Dragonfall">
+<meta name="twitter:description" content="Resources for Dragonfall, an interactive roleplay experience on the ROBLOX platform.">
+<meta name="twitter:image" content="https://dragonfall.com/assets/dragonfall-og.png">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<link href="/assets/main.css?v=1.3.6" rel="stylesheet">
+
+<link href="../../assets/fa-630/css/fontawesome.css" rel="stylesheet">
+<link href="../../assets/fa-630/css/brands.css" rel="stylesheet">
+<link href="../../assets/fa-630/css/solid.css" rel="stylesheet">
+<link href="../../assets/fa-630/css/regular.css" rel="stylesheet">
+
+<style>
+i {
+    font-size: 0.8rem;
+}
+</style>
+</head>
+
+<body>
+<div class="container-md mt-5 mb-5">
+    <div class="row gy-4">
+        <div class="col-sm-12 mb-5">
+            <button type="button" class="btn btn-outline-light"><a href="/"><i class="fa fa-house"></i> Home</a></button> 
+            <h1 class="text-center">Economy</h1>
+
+            <center>
+                <a href="/dragonfall/login"><button type="button" class="btn btn-outline-light">Login</button></a>
+                <a href="/dragonfall/register"><button type="button" class="btn btn-outline-light">Register</button></a>
+
+                <p style="font-weight:500;margin-top:15px;">Links</p>
+                <a href="/dragonfall/economy/auction"><button type="button" class="btn btn-sm btn-outline-info nav-button">Auction</button></a>
+                <a href="/dragonfall/economy/bounties"><button type="button" class="btn btn-sm btn-outline-danger nav-button">Bounties</button></a>
+                <a href="/dragonfall/players"><button type="button" class="btn btn-sm btn-outline-light nav-button">Player List</button></a>
+                <a href="/dragonfall/economy/groups"><button type="button" class="btn btn-sm btn-outline-light nav-button">Group List</button></a>
+                <a href="/dragonfall/economy/logs"><button type="button" class="btn btn-sm btn-outline-light nav-button">Transaction Logs</button></a>
+            </center>
+        </div>
+
+        <div class="col-sm-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+            <div class="card">
+                <ul class="nav nav-tabs nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" data-tab="tab-1">Richest Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-tab="tab-2">Richest Crown Allies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-tab="tab-3">Richest Players</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-tab="tab-4">Most Buildings</a>
+                    </li>
+                </ul>
+
+                <div class="index-card card-body" id="tab-1">
+                    <p class="title-med">Richest Groups</p>
+                    <ol></ol>
+                </div>
+
+                <div class="index-card card-body" id="tab-2" style="display:none;">
+                    <p class="title-med">Richest Crown Allies</p>
+                    <ol></ol>
+                </div>
+
+                <div class="index-card card-body" id="tab-3" style="display:none;">
+                    <p class="title-med">Richest Players</p>
+                    <ol></ol>
+                </div>
+
+                <div class="index-card card-body" id="tab-4" style="display:none;">
+                    <p class="title-med">Most Buildings</p>
+                    <ol></ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <center>2026 © Dragonfall</center>
+    <br></br>
+</footer>
+
+<script>
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.nav-link');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            const contentTabs = ['tab-1', 'tab-2', 'tab-3', 'tab-4'];
+            contentTabs.forEach(id => document.getElementById(id).style.display = 'none');
+            tabs.forEach(innerTab => innerTab.classList.remove('active'));
+            document.getElementById(e.target.getAttribute('data-tab')).style.display = 'block';
+            e.target.classList.add('active');
+        });
+    });
+});
+</script>
+</body>
+</html>
