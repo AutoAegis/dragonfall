@@ -58,3 +58,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Create torch sconces
+['left','right'].forEach(side=>{
+    for(let i=0;i<3;i++){
+        const s = document.createElement('div');
+        s.className='torch-sconce torch-'+side;
+        s.style.top=20+i*25+'%';
+        document.body.appendChild(s);
+    }
+});
