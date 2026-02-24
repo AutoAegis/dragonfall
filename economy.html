@@ -15,6 +15,14 @@
 
 <body class="ember-field">
 
+<!-- WOOD NAVBAR -->
+<nav class="wood-navbar text-center">
+    <a href="index.html">Realm</a>
+    <a href="economy.html">Economy</a>
+    <a href="players.html">Players</a>
+    <a href="exchange.html">Exchange</a>
+</nav>
+
 <div class="container mt-5 mb-5">
 
     <div class="text-center mb-5">
@@ -29,27 +37,50 @@
         </div>
     </div>
 
-    <div class="metal-frame scroll-unfurl">
+    <div class="metal-frame rune-border scroll-unfurl">
+
         <ul class="nav nav-tabs nav-fill">
-            <li class="nav-item"><a class="nav-link active" data-tab="tab-1">Richest Groups</a></li>
-            <li class="nav-item"><a class="nav-link" data-tab="tab-2">Richest Players</a></li>
-            <li class="nav-item"><a class="nav-link" data-tab="tab-3">Most Buildings</a></li>
+            <li class="nav-item">
+                <a class="nav-link active" data-tab="tab-1">Richest Groups</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-tab="tab-2">Richest Players</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-tab="tab-3">Most Buildings</a>
+            </li>
         </ul>
 
+        <!-- TAB 1 -->
         <div class="card-body mt-4" id="tab-1">
-            <p>Richest Groups</p>
-            <p>No group data available.</p>
+
+            <div class="parchment-panel rank-1 p-3 mb-3">
+                <strong>House Valor</strong><br>
+                1,250,000 Gold
+            </div>
+
+            <div class="parchment-panel rank-2 p-3 mb-3">
+                <strong>House Emberfall</strong><br>
+                980,000 Gold
+            </div>
+
+            <div class="parchment-panel rank-3 p-3 mb-3">
+                <strong>House Nightspire</strong><br>
+                740,000 Gold
+            </div>
+
         </div>
 
+        <!-- TAB 2 -->
         <div class="card-body mt-4" id="tab-2" style="display:none;">
-            <p>Richest Players</p>
             <p>No player data available.</p>
         </div>
 
+        <!-- TAB 3 -->
         <div class="card-body mt-4" id="tab-3" style="display:none;">
-            <p>Most Buildings</p>
             <p>No building data available.</p>
         </div>
+
     </div>
 
 </div>
