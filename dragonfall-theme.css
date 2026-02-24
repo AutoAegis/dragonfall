@@ -517,3 +517,185 @@ body::after {
     border: 2px solid #cd7f32;
     box-shadow: 0 0 15px rgba(205,127,50,0.8);
 }
+
+/* ======================================== */
+/* HERO DAY AND NIGHT ATMOSPHERE */
+/* ======================================== */
+
+/* Ensure hero layers properly */
+.dragon-hero {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* ----------------------------- */
+/* DAY SUNLIGHT EFFECT */
+/* ----------------------------- */
+
+.dragon-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,220,140,0.25), transparent 50%),
+        linear-gradient(120deg, rgba(255,200,120,0.15), transparent 60%);
+    animation: sunShift 18s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+@keyframes sunShift {
+    0% { transform: translateX(-2%) translateY(0); }
+    100% { transform: translateX(2%) translateY(-1%); }
+}
+
+/* ----------------------------- */
+/* NIGHT HERO OVERRIDE */
+/* ----------------------------- */
+
+body.night-mode .dragon-hero::before {
+    background:
+        radial-gradient(circle at 70% 25%, rgba(180,200,255,0.18), transparent 40%),
+        radial-gradient(2px 2px at 20% 40%, rgba(255,255,255,0.8), transparent 70%),
+        radial-gradient(1px 1px at 60% 60%, rgba(255,255,255,0.6), transparent 70%),
+        radial-gradient(1px 1px at 80% 30%, rgba(255,255,255,0.5), transparent 70%);
+    animation: starTwinkle 6s ease-in-out infinite alternate;
+}
+
+/* subtle star flicker */
+@keyframes starTwinkle {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+/* ======================================== */
+/* ADVANCED HERO SKY SYSTEM */
+/* ======================================== */
+
+/* Ensure hero stacks correctly */
+.dragon-hero {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ---------------------------------------- */
+/* SUN MOVEMENT */
+/* ---------------------------------------- */
+
+.dragon-hero .sun-orb {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,230,150,0.9), rgba(255,200,120,0.6), transparent 70%);
+    top: 15%;
+    left: 10%;
+    animation: sunArc 120s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes sunArc {
+    0%   { transform: translateX(0) translateY(0); }
+    50%  { transform: translateX(60vw) translateY(5vh); }
+    100% { transform: translateX(0) translateY(0); }
+}
+
+/* ---------------------------------------- */
+/* DAY CLOUDS */
+/* ---------------------------------------- */
+
+.dragon-hero .cloud-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 40%, rgba(255,255,255,0.08), transparent 50%),
+        radial-gradient(circle at 60% 30%, rgba(255,255,255,0.06), transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.05), transparent 60%);
+    animation: cloudDrift 90s linear infinite;
+    z-index: 0;
+}
+
+@keyframes cloudDrift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-15%); }
+}
+
+/* Hide clouds in night */
+body.night-mode .dragon-hero .cloud-layer {
+    display: none;
+}
+
+/* ---------------------------------------- */
+/* MOON */
+/* ---------------------------------------- */
+
+.dragon-hero .moon {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    top: 18%;
+    right: 12%;
+    background: radial-gradient(circle, rgba(220,230,255,0.9), rgba(150,170,220,0.6), transparent 70%);
+    box-shadow: 0 0 30px rgba(180,200,255,0.4);
+    pointer-events: none;
+    display: none;
+    z-index: 0;
+}
+
+/* Show moon in night */
+body.night-mode .dragon-hero .moon {
+    display: block;
+}
+
+/* ---------------------------------------- */
+/* MOON PHASE SYSTEM */
+/* ---------------------------------------- */
+
+/* Default full moon */
+.moon.phase-half::after,
+.moon.phase-crescent::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #0b0f1a;
+}
+
+/* Half moon */
+.moon.phase-half::after {
+    clip-path: inset(0 50% 0 0);
+}
+
+/* Crescent */
+.moon.phase-crescent::after {
+    clip-path: ellipse(60% 100% at 70% 50%);
+}
+
+/* ---------------------------------------- */
+/* SHOOTING STARS */
+/* ---------------------------------------- */
+
+body.night-mode .dragon-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.8) 50%, transparent 100%);
+    width: 2px;
+    height: 80px;
+    opacity: 0;
+    animation: shootingStar 12s linear infinite;
+    z-index: 2;
+}
+
+@keyframes shootingStar {
+    0%   { opacity: 0; transform: translate(-20vw, -10vh) rotate(25deg); }
+    10%  { opacity: 1; }
+    20%  { opacity: 0; transform: translate(40vw, 30vh) rotate(25deg); }
+    100% { opacity: 0; }
+}
